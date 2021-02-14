@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="databaseCustomerRepository" class="cf.mindaugas._03_spring_di_xml.repository.DatabaseCustomerRepository" />
+    <bean name="inMemoryCustomerRepository" class="cf.mindaugas._03_spring_di_xml.repository.InMemoryCustomerRepository" />
+
+    <!--Setter injection -->
+    <!--We describe this as: "wiring beans by name using setter injection" -->
+    <bean name="customerService" class="cf.mindaugas._03_spring_di_xml.service.CustomerServiceImplementation">
+        <property name="customerRepository" ref="databaseCustomerRepository"/>
+        <!--<property name="customerRepository" ref="inMemoryCustomerRepository"/>-->
+    </bean>
+</beans>
