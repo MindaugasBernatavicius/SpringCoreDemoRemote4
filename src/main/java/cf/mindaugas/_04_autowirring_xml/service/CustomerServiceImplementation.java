@@ -1,15 +1,20 @@
-package cf.mindaugas._03_spring_di_xml.service;
+package cf.mindaugas._04_autowirring_xml.service;
 
-import cf.mindaugas._03_spring_di_xml.model.Customer;
-import cf.mindaugas._03_spring_di_xml.repository.CustomerRepository;
-import cf.mindaugas._03_spring_di_xml.repository.DatabaseCustomerRepository;
+import cf.mindaugas._04_autowirring_xml.model.Customer;
+import cf.mindaugas._04_autowirring_xml.repository.CustomerRepository;
 
 import java.util.List;
 
 public class CustomerServiceImplementation implements CustomerService {
     private CustomerRepository customerRepository;
 
+    // constructor autowirring
     public CustomerServiceImplementation(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
+    // autowirring by name
+    public void setdatabaseCustomerRepository(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
@@ -17,8 +22,4 @@ public class CustomerServiceImplementation implements CustomerService {
     public List<Customer> findAll() {
         return customerRepository.findAll();
     }
-
-    // public void setCustomerRepository(CustomerRepository customerRepository) {
-    //     this.customerRepository = customerRepository;
-    // }
 }

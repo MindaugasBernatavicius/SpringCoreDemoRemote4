@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="databaseCustomerRepository" class="cf.mindaugas._04_autowirring_xml.repository.DatabaseCustomerRepository" />
+    <!--<bean name="inMemoryCustomerRepository" class="cf.mindaugas._04_autowirring_xml.repository.InMemoryCustomerRepository" />-->
+
+    <!-- Autowire by constructor : breaks if constructor accepts interface, but there 2 implementors -->
+    <bean name="customerService" class="cf.mindaugas._04_autowirring_xml.service.CustomerServiceImplementation" autowire="constructor" />
+
+    <!-- Autowire by name : uses name of the setter -->
+    <!--<bean name="customerService" class="cf.mindaugas._04_autowirring_xml.service.CustomerServiceImplementation" autowire="byName" />-->
+</beans>
